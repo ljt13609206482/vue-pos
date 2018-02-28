@@ -1,9 +1,13 @@
 <template>
-    <h1>这是商品更新页面</h1>
+    <div class="update-product">
+        <div class="title">
+            <h2>更新商品</h2>
+        </div>
+    </div>
 </template>
 <script>
     export default{
-
+        
     }
 </script>
 <style>

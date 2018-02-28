@@ -13,14 +13,12 @@
             <el-table-column label="操作">
               <template slot-scope="scope">
                 <el-button type="text" size="small" @click="deleteGoods(scope.row)">删除</el-button>
-                <el-button type="text" size="small" @click="updateProduct">更新</el-button>
+                <el-button type="text" size="small" @click="updateProduct('/updateProduct')">更新</el-button>
               </template>
             </el-table-column>
           </el-table>
           <div class="product-btn">
-            <router-link to="/addProduct">
               <el-button type="success">添加商品</el-button>
-            </router-link>
           </div>
         </el-tab-pane>
         <el-tab-pane label="小食">
@@ -31,7 +29,7 @@
             <el-table-column label="操作">
               <template slot-scope="scope">
                 <el-button type="text" size="small" @click="deleteGoods(scope.row)">删除</el-button>
-                <el-button type="text" size="small" @click="updateProduct">更新</el-button>
+                <el-button type="text" size="small" @click="updateProduct('/updateProduct')">更新</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -47,7 +45,7 @@
             <el-table-column label="操作">
               <template slot-scope="scope">
                 <el-button type="text" size="small" @click="deleteGoods(scope.row)">删除</el-button>
-                <el-button type="text" size="small" @click="updateProduct">更新</el-button>
+                <el-button type="text" size="small" @click="updateProduct('/updateProduct')">更新</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -63,12 +61,14 @@
             <el-table-column label="操作">
               <template slot-scope="scope">
                 <el-button type="text" size="small" @click="deleteGoods(scope.row)">删除</el-button>
-                <el-button type="text" size="small" @click="updateProduct">更新</el-button>
+                <el-button type="text" size="small" @click="updateProduct('/updateProduct')">更新</el-button>
               </template>
             </el-table-column>
           </el-table>
           <div class="product-btn">
-            <el-button type="success">添加商品</el-button>
+            <router-link to="/addProduct">
+              <button type="success">新增商品</button>
+            </router-link>
           </div>
         </el-tab-pane>
       </el-tabs>
@@ -121,8 +121,9 @@ import axios from 'axios'
               this.packages=this.packages.filter(o=>o.goodsId!=good.goodsId);
           }
         },
-        updateProduct:function(){
-          this.$router.push('/updateProduct')
+        updateProduct:function(url){
+          var data=[this.hamburgers,this.snacks,this.drinks,this.packages]
+          this.$router.push({path:url,params:data})
         }  
       }
     }

@@ -6,22 +6,22 @@
       <div class="add-product-info">
             <p class="float-lf">
                 <span class="input-title">新增商品类型</span>
-                <el-select v-model="value" placeholder="请选择">
+                <el-select v-model="goodType" placeholder="请选择">
                     <el-option v-for="item in options":key="item.value"
                         :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
                 <span class="input-title">商品名称</span>
-                <el-input v-model="input" placeholder="请输入商品名称" style="width:200px"></el-input>
+                <el-input v-model="goodName" placeholder="请输入商品名称" style="width:200px"></el-input>
             </p>
             <p class="float-lf">
                 <span class="input-title">商品价格</span>
-                <el-input v-model="input" placeholder="请输入商品名称" style="width:200px"></el-input>
+                <el-input v-model="price" placeholder="请输入商品名称" style="width:200px"></el-input>
                <span class="input-title">商品图片</span>
                <input type="file">
             </p>
             <p class="add-btn">
-                <el-button type="success">新增</el-button>
+                <el-button type="success" @click="addToProductList">新增</el-button>
             </p>
       </div>
   </div>
@@ -37,13 +37,22 @@
                 {value: '选项3',label: '饮料'}, 
                 {value: '选项4',label: '套餐'}
                 ],
-                value:'',
-                input:''
+                goodType:'',
+                goodName:'',
+                price:0
                 
             }
         },
         methods:{
-            
+            addToProductList:function(){
+                //获取商品数据，并封装成一个商品对象
+                var newGood={
+                    goodType:this.goodType,
+                    goodName:this.goodName,
+                    price:this.price
+                };
+                this.$emit("addToList","你好");
+            }
         }       
     }
 </script>
