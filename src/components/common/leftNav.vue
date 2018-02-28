@@ -2,24 +2,34 @@
   <div class="left-nav">
       <ul>
           <li>
-              <i class="icon iconfont icon-goumai"></i>
-              <div>收银</div>
+              <router-link to="/">
+                <i class="icon iconfont icon-goumai"></i>
+                <div>收银</div>
+              </router-link>
           </li>
           <li>
-              <i class="icon iconfont icon-hanbao"></i>
-              <div>商品</div>
+              <router-link to="/product">
+                <i class="icon iconfont icon-hanbao"></i>
+                <div>商品</div>
+              </router-link>
           </li>
           <li>
-              <i class="icon iconfont icon-huiyuanqia"></i>
-              <div>会员</div>
+              <router-link to="/member">
+                <i class="icon iconfont icon-huiyuanqia"></i>
+                <div>会员</div>
+              </router-link>
           </li>
           <li>
-              <i class="icon iconfont icon-shuru"></i>
-              <div>统计</div>
+              <router-link to="/count">
+                <i class="icon iconfont icon-shuru"></i>
+                <div>统计</div>
+              </router-link>
           </li>
           <li>
-              <i class="icon iconfont icon-gongnengjianyi"></i>
-              <div>设置</div>
+              <router-link to="/setting">
+                <i class="icon iconfont icon-gongnengjianyi"></i>
+                <div>设置</div>
+              </router-link>
           </li>
       </ul>
   </div>
@@ -31,12 +41,16 @@
 </script>
 <style>
     .left-nav{
-       color:#fff;
+       color:#1d8ce0;
        font-size:10px;
        height:100%;
-       background-color: #1D8ce0;
+       background-color: #ffffff;
        float:left;
        width:5%;
+    }
+    .left-nav a{
+        color: #1d8ce0;
+        text-decoration:none;
     }
     .left-nav li i{
         width: 50px;
