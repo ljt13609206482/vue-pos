@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 //引入组件
 import Pos from '@/components/page/Pos'
+import Product from '@/components/page/Product'
 
 Vue.use(Router)
 
@@ -13,6 +14,11 @@ export default new Router({
       path: '/',
       name: 'Pos',
       component: Pos
+    },
+    {
+      path:'/product',
+      name:'product',
+      component:Product
     }
   ]
 })

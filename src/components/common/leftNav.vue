@@ -6,10 +6,6 @@
               <div>收银</div>
           </li>
           <li>
-              <i class="icon iconfont icon-dianpu"></i>
-              <div>店铺</div>
-          </li>
-          <li>
               <i class="icon iconfont icon-hanbao"></i>
               <div>商品</div>
           </li>

@@ -250,6 +250,7 @@ export default {
 .popular-goods {
   height: auto;
   overflow: hidden;
+  margin-bottom:20px; 
 }
 .popular-goods-list ul li {
   list-style: none;
