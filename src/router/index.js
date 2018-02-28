@@ -6,6 +6,8 @@ import Product from '@/components/page/Product'
 import Member from '@/components/page/member'
 import Count from '@/components/page/count' 
 import Setting from '@/components/page/setting'
+import AddProduct from '@/components/page/addProduct'
+import UpdateProduct from '@/components/page/UpdateProduct'
 
 Vue.use(Router)
 
@@ -21,7 +23,19 @@ export default new Router({
     {
       path:'/product',
       name:'product',
-      component:Product
+      component:Product,
+      children:[
+         {
+           path:'/addProduct',
+           name:'addProduct',
+           component:AddProduct
+         },
+         {
+           path:'/updateProduct',
+           name:'updateProduct',
+           component:UpdateProduct
+         }
+       ]
     },
     {
       path:'/member',

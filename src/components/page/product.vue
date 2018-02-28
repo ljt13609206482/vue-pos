@@ -13,12 +13,14 @@
             <el-table-column label="操作">
               <template slot-scope="scope">
                 <el-button type="text" size="small" @click="deleteGoods(scope.row)">删除</el-button>
-                <el-button type="text" size="small">更新</el-button>
+                <el-button type="text" size="small" @click="updateProduct">更新</el-button>
               </template>
             </el-table-column>
           </el-table>
           <div class="product-btn">
-            <el-button type="success">添加商品</el-button>
+            <router-link to="/addProduct">
+              <el-button type="success">添加商品</el-button>
+            </router-link>
           </div>
         </el-tab-pane>
         <el-tab-pane label="小食">
@@ -29,7 +31,7 @@
             <el-table-column label="操作">
               <template slot-scope="scope">
                 <el-button type="text" size="small" @click="deleteGoods(scope.row)">删除</el-button>
-                <el-button type="text" size="small">更新</el-button>
+                <el-button type="text" size="small" @click="updateProduct">更新</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -45,7 +47,7 @@
             <el-table-column label="操作">
               <template slot-scope="scope">
                 <el-button type="text" size="small" @click="deleteGoods(scope.row)">删除</el-button>
-                <el-button type="text" size="small">更新</el-button>
+                <el-button type="text" size="small" @click="updateProduct">更新</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -61,7 +63,7 @@
             <el-table-column label="操作">
               <template slot-scope="scope">
                 <el-button type="text" size="small" @click="deleteGoods(scope.row)">删除</el-button>
-                <el-button type="text" size="small">更新</el-button>
+                <el-button type="text" size="small" @click="updateProduct">更新</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -71,6 +73,7 @@
         </el-tab-pane>
       </el-tabs>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 <script>
@@ -117,6 +120,9 @@ import axios from 'axios'
           if(6<good.goodsId<=8){
               this.packages=this.packages.filter(o=>o.goodsId!=good.goodsId);
           }
+        },
+        updateProduct:function(){
+          this.$router.push('/updateProduct')
         }  
       }
     }
