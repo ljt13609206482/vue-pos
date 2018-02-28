@@ -24,14 +24,14 @@ export default new Router({
       component:Product
     },
     {
-      path:'member',
+      path:'/member',
       name:'member',
       component:Member
     },
     {
       path:'/count',
-      name:'member',
-      component:Member
+      name:'count',
+      component:Count
     },
     {
       path:'/setting',
