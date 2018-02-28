@@ -32,16 +32,19 @@
         data() {
         return {
             options: [
-                {value: '选项1',label: '汉堡'},
-                {value: '选项2',label: '小食'}, 
-                {value: '选项3',label: '饮料'}, 
-                {value: '选项4',label: '套餐'}
+                {value: '1',label: '汉堡'},
+                {value: '2',label: '小食'}, 
+                {value: '3',label: '饮料'}, 
+                {value: '4',label: '套餐'}
                 ],
                 goodType:'',
                 goodName:'',
                 price:0
                 
             }
+        },
+        created:function(){
+            console.log(this.$route.params.paramName)
         },
         methods:{
             addToProductList:function(){
@@ -51,7 +54,7 @@
                     goodName:this.goodName,
                     price:this.price
                 };
-                this.$emit("addToList","你好");
+                this.$emit('childrenMsg',newGood)
             }
         }       
     }

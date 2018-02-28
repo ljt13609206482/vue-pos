@@ -23,19 +23,7 @@ export default new Router({
     {
       path:'/product',
       name:'product',
-      component:Product,
-      children:[
-         {
-           path:'/addProduct',
-           name:'addProduct',
-           component:AddProduct
-         },
-         {
-           path:'/updateProduct',
-           name:'updateProduct',
-           component:UpdateProduct
-         }
-       ]
+      component:Product
     },
     {
       path:'/member',

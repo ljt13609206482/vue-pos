@@ -18,7 +18,7 @@
             </el-table-column>
           </el-table>
           <div class="product-btn">
-              <el-button type="success">添加商品</el-button>
+              <el-button type="success" @click="updateProduct('/addProduct')">添加商品</el-button>
           </div>
         </el-tab-pane>
         <el-tab-pane label="小食">
@@ -34,7 +34,7 @@
             </el-table-column>
           </el-table>
           <div class="product-btn">
-            <el-button type="success">添加商品</el-button>
+            <el-button type="success" @click="updateProduct('/addProduct')">添加商品</el-button>
           </div>
         </el-tab-pane>
         <el-tab-pane label="饮料">
@@ -50,7 +50,7 @@
             </el-table-column>
           </el-table>
           <div class="product-btn">
-            <el-button type="success">添加商品</el-button>
+            <el-button type="success" @click="updateProduct('/addProduct')">添加商品</el-button>
           </div>
         </el-tab-pane>
         <el-tab-pane label="套餐">
@@ -66,19 +66,25 @@
             </el-table-column>
           </el-table>
           <div class="product-btn">
-            <router-link to="/addProduct">
-              <button type="success">新增商品</button>
-            </router-link>
+            <div class="product-btn">
+              <el-button type="success" @click="updateProduct('/addProduct')">添加商品</el-button>
+            </div>
           </div>
         </el-tab-pane>
       </el-tabs>
     </div>
-    <router-view></router-view>
+    <!-- 父组件嗲用子组件是，定义一个自定义事件函数 -->
+    <AddProduct @childrenMsg="addToList"></AddProduct>
   </div>
 </template>
 <script>
+import AddProduct from '@/components/page/addProduct'
 import axios from 'axios'
     export default{
+      name: 'addProduct',
+      components:{
+        AddProduct
+      },
       data(){
         return {
           hamburgers:[],
@@ -103,6 +109,8 @@ import axios from 'axios'
           .catch(error => {
             alert("网络错误！无法访问！");
           });
+          //获取url传递的参数
+          console.log(this.$router.params)
       },
       methods:{
         //根据传入的商品信息，从商品列表中删除对应商品
@@ -122,8 +130,46 @@ import axios from 'axios'
           }
         },
         updateProduct:function(url){
-          var data=[this.hamburgers,this.snacks,this.drinks,this.packages]
-          this.$router.push({path:url,params:data})
+          this.$router.push(url)
+        },
+        //通过事件触发获取子组件传递的参数
+        addToList:function(data){
+          if(data.goodType==1){
+            var len=this.hamburgers.length;
+            var newGood={
+              goodsId:len+1,
+              goodsName:data.goodName,
+              price:data.price
+            };
+            this.hamburgers.push(newGood)
+          }
+          if(data.goodType==2){
+            var len=this.snacks.length;
+            var newGood={
+              goodsId:len+1,
+              goodsName:data.goodName,
+              price:data.price
+            };
+            this.snacks.push(newGood)
+          }
+          if(data.goodType==3){
+            var len=this.drinks.length;
+            var newGood={
+              goodsId:len+1,
+              goodsName:data.goodName,
+              price:data.price
+            };
+            this.drinks.push(newGood)
+          }
+          if(data.goodType==4){
+            var len=this.packages.length;
+            var newGood={
+              goodsId:len+1,
+              goodsName:data.goodName,
+              price:data.price
+            };
+            this.packages.push(newGood)
+          }
         }  
       }
     }
