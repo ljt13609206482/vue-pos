@@ -291,7 +291,7 @@ export default {
   width: 40%;
 }
 .food-name {
-  font-size: 18px;
+  font-size: 15px;
   padding-left: 8px;
   color: #900;
 }

@@ -100,8 +100,13 @@
         drawPie:function(countId,countData){
           let myChart = this.$echarts.init(document.getElementById(countId))
           myChart.setOption({
+            tooltip : {
+              trigger: 'item',
+              formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
             series : [
               {
+                name:'商品销量',
                 type: 'pie',
                 radius: '40%',
                 data:countData
