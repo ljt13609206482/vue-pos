@@ -6,7 +6,7 @@
     <div class="product-count-list">
       <el-tabs type="card">
         <el-tab-pane label=" 收入统计">
-          <div id="myChart" :style="{width: '1000px', height: '600px'}"></div>
+          <div id="myChart" :style="{width: '1000px', height: '500px'}"></div>
         </el-tab-pane>
         <el-tab-pane label="商品销量统计">
           <div class="charts-list">
@@ -115,6 +115,6 @@
 <style>
   .charts-list div{
     float: left;
-    margin: 20px 80px;
+    margin: 0px 80px;
   }
 </style>
