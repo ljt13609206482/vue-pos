@@ -44,7 +44,7 @@
           <div class="popular-goods-list">
             <ul>
               <li v-for="good of popularGoods" @click="addOrderList(good)">
-                <span>{{good.goodsName}}</span>
+                <span>{{good.product_name}}</span>
                 <span class="p-price">￥{{good.price}}</span>
               </li>
             </ul>
@@ -128,10 +128,10 @@ export default {
   created: function() {
     //请求热销商品数据
     axios
-      .get("http://jspang.com/DemoApi/oftenGoods.php")
+      .get("http://localhost:8081/xiangmu/vuePosData/product/hotProduct.php")
       //请求成功后对返回数据进行操作
       .then(response => {
-        // console.log(response)
+        console.log(response)
         this.popularGoods = response.data;
       })
       //请求失败后的处理函数
@@ -143,7 +143,7 @@ export default {
       .get("http://127.0.0.1:8081/xiangmu/vuePosData/product/productList.php")
       //请求成功后对返回数据进行操作
       .then(response => {
-        console.log(response.data)
+        //console.log(response.data)
         this.hamburgers = response.data[0];
         this.snacks = response.data[1];
         this.drinks = response.data[2];

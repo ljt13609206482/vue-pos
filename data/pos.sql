@@ -125,5 +125,26 @@ CREATE TABLE `member` (
   `integral` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--商品销量统计
+CREATE TABLE `saleCount` (
+  `cid` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
+  `product_name` varchar(128) NOT NULL,
+  `count` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
+INSERT INTO `salecount`(`cid`, `product_id`, `product_name`, `count`) VALUES 
+(null,4,'双层皇堡',1227),
+(null,11,'王道椒香鸡翅',1136),
+(null,2,'复古烟熏鸡堡',968),
+(null,3,'天椒皇堡',1311),
+(null,7,'荤劲十足爆牛堡',972),
+(null,4,'荤劲十足超牛堡',1147),
+(null,17,'热咖啡',1152),
+(null,13,'薯霸王',874),
+(null,10,'王道川薯鸡翅',992),
+(null,21,'美式鸡腿堡套餐',1437),
+(null,22,'薯你风情套餐',1021),
+(null,15,'洋葱圈',895),
+(null,13,'薯霸王',874),
+(null,16,'火烤鸡腿色拉',953),
