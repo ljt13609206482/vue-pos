@@ -7,7 +7,7 @@
         <el-tabs type="card">
           <el-tab-pane label=" 点 餐 ">
             <el-table :data="tableData" border style="width:100%">
-              <el-table-column prop="goodsName" label="商品名称"></el-table-column>
+              <el-table-column prop="product_name" label="商品名称"></el-table-column>
               <el-table-column prop="count" label="数量" width="50px;"></el-table-column>
               <el-table-column prop="price" label="金额" width="70px;"></el-table-column>
               <el-table-column label="操作" width="100" fixed="right">
@@ -58,9 +58,9 @@
                 <ul class="food-list">
                   <li v-for="hamburger of hamburgers" @click="addOrderList(hamburger)">
                     <span class="food-img">
-                      <img :src="hamburger.goodsImg" width="100%">
+                      <img :src="'static/'+hamburger.pic" width="100%">
                     </span>
-                    <span class="food-name">{{hamburger.goodsName}}</span>
+                    <span class="food-name">{{hamburger.product_name}}</span>
                     <span class="food-price">￥{{hamburger.price}}元</span>
                   </li>
                 </ul>
@@ -70,9 +70,9 @@
               <ul class="food-list">
                   <li v-for="snack of snacks" @click="addOrderList(snack)">
                     <span class="food-img">
-                      <img :src="snack.goodsImg" width="100%">
+                      <img :src="'static/'+snack.pic" width="100%">
                     </span>
-                    <span class="food-name">{{snack.goodsName}}</span>
+                    <span class="food-name">{{snack.product_name}}</span>
                     <span class="food-price">￥{{snack.price}}元</span>
                   </li>
                 </ul>
@@ -81,9 +81,9 @@
               <ul class="food-list">
                 <li v-for="drink of drinks" @click="addOrderList(drink)">
                   <span class="food-img">
-                    <img :src="drink.goodsImg" width="100%">
+                    <img :src="'static/'+drink.pic" width="100%">
                   </span>
-                  <span class="food-name">{{drink.goodsName}}</span>
+                  <span class="food-name">{{drink.product_name}}</span>
                   <span class="food-price">￥{{drink.price}}元</span>
                 </li>
               </ul>
@@ -92,9 +92,9 @@
               <ul class="food-list">
                 <li v-for="p of packages" @click="addOrderList(p)">
                   <span class="food-img">
-                    <img :src="p.goodsImg" width="100%">
+                    <img :src="'static/'+p.pic" width="100%">
                   </span>
-                  <span class="food-name">{{p.goodsName}}</span>
+                  <span class="food-name">{{p.product_name}}</span>
                   <span class="food-price">￥{{p.price}}元</span>
                 </li>
               </ul>
@@ -140,10 +140,10 @@ export default {
       });
     //请求分类商品数据
     axios
-      .get("http://jspang.com/DemoApi/typeGoods.php")
+      .get("http://127.0.0.1:8081/xiangmu/vuePosData/product/productList.php")
       //请求成功后对返回数据进行操作
       .then(response => {
-        //console.log(response)
+        console.log(response.data)
         this.hamburgers = response.data[0];
         this.snacks = response.data[1];
         this.drinks = response.data[2];
@@ -167,19 +167,19 @@ export default {
       let isHave = false;
       for (let i = 0; i < this.tableData.length; i++) {
         //console.log(this.tableData[i].goodsId);
-        if (this.tableData[i].goodsId == good.goodsId) {
+        if (this.tableData[i].pid == good.pid) {
           isHave = true; //存在
         }
       }
       if (isHave) {
         //存在就进行数量添加
-        let arr = this.tableData.filter(o => o.goodsId == good.goodsId);
+        let arr = this.tableData.filter(o => o.pid == good.pid);
         arr[0].count++;
       } else {
         //不存在就压入数组
         let newGood = {
-          goodsId: good.goodsId,
-          goodsName: good.goodsName,
+          pid: good.pid,
+          product_name: good.product_name,
           price: good.price,
           count: 1
         };
@@ -202,7 +202,7 @@ export default {
     //删除单个商品
     delSingleGoods(good) {
       //是要破那个过滤器筛选出除要删除的尚品以外的其它商品，重新赋值给商品数组
-      this.tableData = this.tableData.filter(o => o.goodsId != good.goodsId);
+      this.tableData = this.tableData.filter(o => o.pid != good.pid);
       this.getCount(good);
     },
     delAllGoods(){
@@ -272,7 +272,7 @@ export default {
 }
 .food-list li {
   list-style: none;
-  width: 23%;
+  width: 26%;
   border: 1px solid #1d8ce0;
   border-radius: 5px;
   height: auto;
