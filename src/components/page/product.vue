@@ -7,8 +7,8 @@
       <el-tabs type="card">
         <el-tab-pane label="汉堡">
           <el-table :data="hamburgers" border style="width:100%">
-            <el-table-column prop="goodsId" label="商品编号"></el-table-column>
-            <el-table-column prop="goodsName" label="商品名称"></el-table-column>
+            <el-table-column prop="pid" label="商品编号"></el-table-column>
+            <el-table-column prop="product_name" label="商品名称"></el-table-column>
             <el-table-column prop="price" label="商品价格(元)"></el-table-column>
             <el-table-column label="操作">
               <template slot-scope="scope">
@@ -23,8 +23,8 @@
         </el-tab-pane>
         <el-tab-pane label="小食">
           <el-table :data="snacks" border style="width:100%">
-            <el-table-column prop="goodsId" label="商品编号"></el-table-column>
-            <el-table-column prop="goodsName" label="商品名称"></el-table-column>
+            <el-table-column prop="pid" label="商品编号"></el-table-column>
+            <el-table-column prop="product_name" label="商品名称"></el-table-column>
             <el-table-column prop="price" label="商品价格(元)"></el-table-column>
             <el-table-column label="操作">
               <template slot-scope="scope">
@@ -39,8 +39,8 @@
         </el-tab-pane>
         <el-tab-pane label="饮料">
           <el-table :data="drinks" border style="width:100%">
-            <el-table-column prop="goodsId" label="商品编号"></el-table-column>
-            <el-table-column prop="goodsName" label="商品名称"></el-table-column>
+            <el-table-column prop="pid" label="商品编号"></el-table-column>
+            <el-table-column prop="product_name" label="商品名称"></el-table-column>
             <el-table-column prop="price" label="商品价格(元)"></el-table-column>
             <el-table-column label="操作">
               <template slot-scope="scope">
@@ -55,8 +55,8 @@
         </el-tab-pane>
         <el-tab-pane label="套餐">
           <el-table :data="packages" border style="width:100%">
-            <el-table-column prop="goodsId" label="商品编号"></el-table-column>
-            <el-table-column prop="goodsName" label="商品名称"></el-table-column>
+            <el-table-column prop="pid" label="商品编号"></el-table-column>
+            <el-table-column prop="product_name" label="商品名称"></el-table-column>
             <el-table-column prop="price" label="商品价格(元)"></el-table-column>
             <el-table-column label="操作">
               <template slot-scope="scope">
@@ -96,7 +96,7 @@ import axios from 'axios'
       created:function(){
         //请求分类商品数据
         axios
-          .get("http://jspang.com/DemoApi/typeGoods.php")
+          .get("http://127.0.0.1:8081/xiangmu/vuePosData/product/productList.php")
           //请求成功后对返回数据进行操作
           .then(response => {
             //console.log(response)
