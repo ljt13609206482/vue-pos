@@ -1,7 +1,7 @@
 <template>
   <div class="add-product">
       <div class="add-title">
-          <h2>新增商品</h2>
+          <h2>更新商品</h2>
       </div>
       <div class="add-product-info">
         <p>
@@ -18,21 +18,22 @@
         </p>
         <p>
             <span class="input-title">商品价格</span>
-            <el-input v-model="price" placeholder="请输入商品名称" style="width:200px"></el-input>
+            <el-input v-model="price" placeholder="请输入商品价格" style="width:200px" :value="updateGood.price"></el-input>
         </p>
         <p>
             <span class="input-title">商品图片</span>
             <input type="file">
         </p>
-        <p class="add-btn">
-            <el-button type="success" @click="addToProductList">新增</el-button>
-        </p>
       </div>
+      <p class="add-btn">
+            <el-button type="success" @click="addToProductList">提交</el-button>
+        </p>
   </div>
 
 </template>
 <script>
     export default{
+        props:['updateGood'],
         data() {
         return {
             options: [
@@ -48,7 +49,15 @@
             }
         },
         created:function(){
-            console.log(this.$route.params.paramName)
+            //console.log(this.$route.params.paramName)
+        },
+        watch:{
+            'updateGood':function(value){
+                console.log(value)
+                this.goodType=value.family_id;
+                this.goodName=value.product_name;
+                this.price=value.price;
+            }
         },
         methods:{
             addToProductList:function(){
@@ -80,8 +89,6 @@
         padding: 10px;
     }
     .add-btn{
-        position: relative;
-        left: 300px;
     }
 </style>
 

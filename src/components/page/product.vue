@@ -14,13 +14,10 @@
               <el-table-column label="操作">
                 <template slot-scope="scope">
                   <el-button type="text" size="small" @click="deleteGoods(scope.row)">删除</el-button>
-                  <el-button type="text" size="small" @click="updateProduct('/updateProduct')">更新</el-button>
+                  <el-button type="text" size="small" @click="updateProduct(scope.row)">更新</el-button>
                 </template>
               </el-table-column>
             </el-table>
-            <div class="product-btn">
-                <el-button type="success" @click="updateProduct('/addProduct')">添加商品</el-button>
-            </div>
           </el-tab-pane>
           <el-tab-pane label="小食">
             <el-table :data="snacks" border style="width:100%">
@@ -30,7 +27,7 @@
               <el-table-column label="操作">
                 <template slot-scope="scope">
                   <el-button type="text" size="small" @click="deleteGoods(scope.row)">删除</el-button>
-                  <el-button type="text" size="small" @click="updateProduct('/updateProduct')">更新</el-button>
+                  <el-button type="text" size="small" @click="updateProduct(scope.row)">更新</el-button>
                 </template>
               </el-table-column>
             </el-table>
@@ -43,13 +40,10 @@
               <el-table-column label="操作">
                 <template slot-scope="scope">
                   <el-button type="text" size="small" @click="deleteGoods(scope.row)">删除</el-button>
-                  <el-button type="text" size="small" @click="updateProduct('/updateProduct')">更新</el-button>
+                  <el-button type="text" size="small" @click="updateProduct(scope.row)">更新</el-button>
                 </template>
               </el-table-column>
             </el-table>
-            <div class="product-btn">
-              <el-button type="success" @click="updateProduct('/addProduct')">添加商品</el-button>
-            </div>
           </el-tab-pane>
           <el-tab-pane label="套餐">
             <el-table :data="packages" border style="width:100%">
@@ -59,7 +53,7 @@
               <el-table-column label="操作">
                 <template slot-scope="scope">
                   <el-button type="text" size="small" @click="deleteGoods(scope.row)">删除</el-button>
-                  <el-button type="text" size="small" @click="updateProduct('/updateProduct')">更新</el-button>
+                  <el-button type="text" size="small" @click="updateProduct(scope.row)">更新</el-button>
                 </template>
               </el-table-column>
             </el-table>
@@ -69,26 +63,25 @@
     </el-col>
     <!-- 父组件嗲用子组件是，定义一个自定义事件函数 -->
     <el-col :span="10">
-      <AddProduct @childrenMsg="addToList"></AddProduct>
-      <UpdateProduct></UpdateProduct> 
+      <AddProduct @childrenMsg="addToList" :updateGood="updateGood"></AddProduct>
     </el-col>
   </div>
 </template>
 <script>
 import AddProduct from '@/components/page/addProduct'
-import UpdateProduct from '@/components/page/updateProduct'
 import axios from 'axios'
     export default{
       name:'addProduct',
       components:{
-        AddProduct,UpdateProduct
+        AddProduct
       },
       data(){
         return {
           hamburgers:[],
           snacks:[],
           drinks:[],
-          packages:[]
+          packages:[],
+          updateGood:""
         }
       },
       created:function(){
@@ -127,47 +120,32 @@ import axios from 'axios'
               this.packages=this.packages.filter(o=>o.pid!=good.pid);
           }
         },
-        updateProduct:function(url){
-          this.$router.push(url)
+        updateProduct:function(product){
+            this.updateGood=product;
+            console.log(this.updateGood)
+
         },
         //通过事件触发获取子组件传递的参数
         addToList:function(data){
-          if(data.goodType==1){
-            var len=this.hamburgers.length;
-            var newGood={
-              goodsId:len+1,
-              goodsName:data.goodName,
-              price:data.price
-            };
-            this.hamburgers.push(newGood)
-          }
-          if(data.goodType==2){
-            var len=this.snacks.length;
-            var newGood={
-              goodsId:len+1,
-              goodsName:data.goodName,
-              price:data.price
-            };
-            this.snacks.push(newGood)
-          }
-          if(data.goodType==3){
-            var len=this.drinks.length;
-            var newGood={
-              goodsId:len+1,
-              goodsName:data.goodName,
-              price:data.price
-            };
-            this.drinks.push(newGood)
-          }
-          if(data.goodType==4){
-            var len=this.packages.length;
-            var newGood={
-              goodsId:len+1,
-              goodsName:data.goodName,
-              price:data.price
-            };
-            this.packages.push(newGood)
-          }
+          let url='http://127.0.0.1:8081/xiangmu/vuePosData/product/addProduct.php';
+          url+='?family_id='+data.goodType+'&product_name='+data.goodName+'&price='+data.price+'&pic=""';
+          axios.get(url
+            ).then((response)=>{
+              if(response.data.status==1){
+                this.$message({
+                  message:'商品更新成功！',
+                  type:'success'
+                })
+                window.location.reload();
+              }else{
+                this.$message({
+                  message:'商品更新失败！',
+                  type:'danger'
+                })
+              }
+          }).catch((err)=>{
+            alert("网络错误！无法访问！");
+          })
         }  
       }
     }
