@@ -121,7 +121,8 @@ export default {
       drinks: [],
       packages: [],
       totalCount: 0,
-      totalMoney: 0
+      totalMoney: 0,
+      goodArray:[],
     };
   },
   //组建创建后，从远程获取数据
@@ -178,6 +179,7 @@ export default {
       } else {
         //不存在就压入数组
         let newGood = {
+          family_id:good.family_id,
           pid: good.pid,
           product_name: good.product_name,
           price: good.price,
@@ -213,13 +215,23 @@ export default {
     //结账方法
     checkOut(){
       if(this.totalCount!=0){
-        this.tableData=[];
-        this.totalCount=0;
-        this.totalMoney=0;
-        this.$message({
-          message:'结账成功！',
-          type:'success'
+        //console.log(this.tableData);
+        var tmp=[]
+        for(var i=0;i<this.tableData.length;i++){
+          tmp['pid']=this.tableData[i].pid;
+          tmp['count']=this.tableData[i].count;
+          this.goodArray.push(tmp);
+          console.log(this.goodArray)
+        }
+        var url='http://127.0.0.1:8081/xiangmu/vuePosData/product/checkout.php?data='+this.goodArray;
+        axios.get(url)
+        .then((response)=>{
+          console.log(response)
         })
+        .catch((err)=>{
+          alert("网络错误，无法连接！")
+        })
+        
       }else{
         this.$message.error('暂无订单需要结账')
       }
