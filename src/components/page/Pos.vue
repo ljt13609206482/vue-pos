@@ -131,7 +131,7 @@ export default {
       .get("http://localhost:8081/xiangmu/vuePosData/product/hotProduct.php")
       //请求成功后对返回数据进行操作
       .then(response => {
-        console.log(response)
+        //console.log(response)
         this.popularGoods = response.data;
       })
       //请求失败后的处理函数

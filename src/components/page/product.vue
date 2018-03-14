@@ -3,87 +3,85 @@
     <div class="title">
       <h1>商品管理</h1>
     </div>
-    <div class="product-list">
-      <el-tabs type="card">
-        <el-tab-pane label="汉堡">
-          <el-table :data="hamburgers" border style="width:100%">
-            <el-table-column prop="pid" label="商品编号"></el-table-column>
-            <el-table-column prop="product_name" label="商品名称"></el-table-column>
-            <el-table-column prop="price" label="商品价格(元)"></el-table-column>
-            <el-table-column label="操作">
-              <template slot-scope="scope">
-                <el-button type="text" size="small" @click="deleteGoods(scope.row)">删除</el-button>
-                <el-button type="text" size="small" @click="updateProduct('/updateProduct')">更新</el-button>
-              </template>
-            </el-table-column>
-          </el-table>
-          <div class="product-btn">
-              <el-button type="success" @click="updateProduct('/addProduct')">添加商品</el-button>
-          </div>
-        </el-tab-pane>
-        <el-tab-pane label="小食">
-          <el-table :data="snacks" border style="width:100%">
-            <el-table-column prop="pid" label="商品编号"></el-table-column>
-            <el-table-column prop="product_name" label="商品名称"></el-table-column>
-            <el-table-column prop="price" label="商品价格(元)"></el-table-column>
-            <el-table-column label="操作">
-              <template slot-scope="scope">
-                <el-button type="text" size="small" @click="deleteGoods(scope.row)">删除</el-button>
-                <el-button type="text" size="small" @click="updateProduct('/updateProduct')">更新</el-button>
-              </template>
-            </el-table-column>
-          </el-table>
-          <div class="product-btn">
-            <el-button type="success" @click="updateProduct('/addProduct')">添加商品</el-button>
-          </div>
-        </el-tab-pane>
-        <el-tab-pane label="饮料">
-          <el-table :data="drinks" border style="width:100%">
-            <el-table-column prop="pid" label="商品编号"></el-table-column>
-            <el-table-column prop="product_name" label="商品名称"></el-table-column>
-            <el-table-column prop="price" label="商品价格(元)"></el-table-column>
-            <el-table-column label="操作">
-              <template slot-scope="scope">
-                <el-button type="text" size="small" @click="deleteGoods(scope.row)">删除</el-button>
-                <el-button type="text" size="small" @click="updateProduct('/updateProduct')">更新</el-button>
-              </template>
-            </el-table-column>
-          </el-table>
-          <div class="product-btn">
-            <el-button type="success" @click="updateProduct('/addProduct')">添加商品</el-button>
-          </div>
-        </el-tab-pane>
-        <el-tab-pane label="套餐">
-          <el-table :data="packages" border style="width:100%">
-            <el-table-column prop="pid" label="商品编号"></el-table-column>
-            <el-table-column prop="product_name" label="商品名称"></el-table-column>
-            <el-table-column prop="price" label="商品价格(元)"></el-table-column>
-            <el-table-column label="操作">
-              <template slot-scope="scope">
-                <el-button type="text" size="small" @click="deleteGoods(scope.row)">删除</el-button>
-                <el-button type="text" size="small" @click="updateProduct('/updateProduct')">更新</el-button>
-              </template>
-            </el-table-column>
-          </el-table>
-          <div class="product-btn">
+    <el-col :span="14">
+      <div class="product-list">
+        <el-tabs type="card">
+          <el-tab-pane label="汉堡">
+            <el-table :data="hamburgers" border style="width:100%">
+              <el-table-column prop="pid" label="商品编号"></el-table-column>
+              <el-table-column prop="product_name" label="商品名称"></el-table-column>
+              <el-table-column prop="price" label="商品价格(元)"></el-table-column>
+              <el-table-column label="操作">
+                <template slot-scope="scope">
+                  <el-button type="text" size="small" @click="deleteGoods(scope.row)">删除</el-button>
+                  <el-button type="text" size="small" @click="updateProduct('/updateProduct')">更新</el-button>
+                </template>
+              </el-table-column>
+            </el-table>
+            <div class="product-btn">
+                <el-button type="success" @click="updateProduct('/addProduct')">添加商品</el-button>
+            </div>
+          </el-tab-pane>
+          <el-tab-pane label="小食">
+            <el-table :data="snacks" border style="width:100%">
+              <el-table-column prop="pid" label="商品编号"></el-table-column>
+              <el-table-column prop="product_name" label="商品名称"></el-table-column>
+              <el-table-column prop="price" label="商品价格(元)"></el-table-column>
+              <el-table-column label="操作">
+                <template slot-scope="scope">
+                  <el-button type="text" size="small" @click="deleteGoods(scope.row)">删除</el-button>
+                  <el-button type="text" size="small" @click="updateProduct('/updateProduct')">更新</el-button>
+                </template>
+              </el-table-column>
+            </el-table>
+          </el-tab-pane>
+          <el-tab-pane label="饮料">
+            <el-table :data="drinks" border style="width:100%">
+              <el-table-column prop="pid" label="商品编号"></el-table-column>
+              <el-table-column prop="product_name" label="商品名称"></el-table-column>
+              <el-table-column prop="price" label="商品价格(元)"></el-table-column>
+              <el-table-column label="操作">
+                <template slot-scope="scope">
+                  <el-button type="text" size="small" @click="deleteGoods(scope.row)">删除</el-button>
+                  <el-button type="text" size="small" @click="updateProduct('/updateProduct')">更新</el-button>
+                </template>
+              </el-table-column>
+            </el-table>
             <div class="product-btn">
               <el-button type="success" @click="updateProduct('/addProduct')">添加商品</el-button>
             </div>
-          </div>
-        </el-tab-pane>
-      </el-tabs>
-    </div>
+          </el-tab-pane>
+          <el-tab-pane label="套餐">
+            <el-table :data="packages" border style="width:100%">
+              <el-table-column prop="pid" label="商品编号"></el-table-column>
+              <el-table-column prop="product_name" label="商品名称"></el-table-column>
+              <el-table-column prop="price" label="商品价格(元)"></el-table-column>
+              <el-table-column label="操作">
+                <template slot-scope="scope">
+                  <el-button type="text" size="small" @click="deleteGoods(scope.row)">删除</el-button>
+                  <el-button type="text" size="small" @click="updateProduct('/updateProduct')">更新</el-button>
+                </template>
+              </el-table-column>
+            </el-table>
+          </el-tab-pane>
+        </el-tabs>
+      </div>
+    </el-col>
     <!-- 父组件嗲用子组件是，定义一个自定义事件函数 -->
-    <AddProduct @childrenMsg="addToList"></AddProduct>
+    <el-col :span="10">
+      <AddProduct @childrenMsg="addToList"></AddProduct>
+      <UpdateProduct></UpdateProduct> 
+    </el-col>
   </div>
 </template>
 <script>
 import AddProduct from '@/components/page/addProduct'
+import UpdateProduct from '@/components/page/updateProduct'
 import axios from 'axios'
     export default{
-      name: 'addProduct',
+      name:'addProduct',
       components:{
-        AddProduct
+        AddProduct,UpdateProduct
       },
       data(){
         return {
@@ -115,18 +113,18 @@ import axios from 'axios'
       methods:{
         //根据传入的商品信息，从商品列表中删除对应商品
         deleteGoods:function(good){
-          //console.log(good.goodsId)
-          if(good.goodsId<=3){
-            this.hamburgers=this.hamburgers.filter(o=>o.goodsId!=good.goodsId);
+          console.log(good)
+          if(good.family_id==1){
+            this.hamburgers=this.hamburgers.filter(o=>o.pid!=good.pid);
           }
-          if(3<good.goodsId<=6){
-            this.snacks=this.snacks.filter(o=>o.goodsId!=good.goodsId);
+          if(good.family_id==2){
+            this.snacks=this.snacks.filter(o=>o.pid!=good.pid);
           }
-          if(6<good.goodsId<=8){
-              this.drinks=this.drinks.filter(o=>o.goodsId!=good.goodsId);
+          if(good.family_id==3){
+              this.drinks=this.drinks.filter(o=>o.pid!=good.pid);
           }
-          if(6<good.goodsId<=8){
-              this.packages=this.packages.filter(o=>o.goodsId!=good.goodsId);
+          if(good.family_id==4){
+              this.packages=this.packages.filter(o=>o.pid!=good.pid);
           }
         },
         updateProduct:function(url){

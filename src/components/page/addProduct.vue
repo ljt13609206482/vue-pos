@@ -4,25 +4,29 @@
           <h2>新增商品</h2>
       </div>
       <div class="add-product-info">
-            <p class="float-lf">
-                <span class="input-title">新增商品类型</span>
-                <el-select v-model="goodType" placeholder="请选择">
-                    <el-option v-for="item in options":key="item.value"
-                        :label="item.label" :value="item.value">
-                    </el-option>
-                </el-select>
-                <span class="input-title">商品名称</span>
-                <el-input v-model="goodName" placeholder="请输入商品名称" style="width:200px"></el-input>
-            </p>
-            <p class="float-lf">
-                <span class="input-title">商品价格</span>
-                <el-input v-model="price" placeholder="请输入商品名称" style="width:200px"></el-input>
-               <span class="input-title">商品图片</span>
-               <input type="file">
-            </p>
-            <p class="add-btn">
-                <el-button type="success" @click="addToProductList">新增</el-button>
-            </p>
+        <p>
+            <span class="input-title">新增商品类型</span>
+            <el-select v-model="goodType" placeholder="请选择">
+                <el-option v-for="item in options":key="item.value"
+                    :label="item.label" :value="item.value">
+                </el-option>
+            </el-select>
+        </p>
+        <p>
+            <span class="input-title">商品名称</span>
+            <el-input v-model="goodName" placeholder="请输入商品名称" style="width:200px"></el-input>
+        </p>
+        <p>
+            <span class="input-title">商品价格</span>
+            <el-input v-model="price" placeholder="请输入商品名称" style="width:200px"></el-input>
+        </p>
+        <p>
+            <span class="input-title">商品图片</span>
+            <input type="file">
+        </p>
+        <p class="add-btn">
+            <el-button type="success" @click="addToProductList">新增</el-button>
+        </p>
       </div>
   </div>
 
@@ -61,19 +65,23 @@
 </script>
 <style>
     .add-product{
-        width: 700px;
         background: #ffffff;
-        margin:-50px auto ;
+        margin:40px auto ;
         border: 1px solid #c0ccda;
-        height: 270px;
+        height: auto;
     }
-    .float-lf{
-        float: left;
-        margin-left: 20px;
+    .add-product-info{
+        width:80%;
+        text-align: left;
+        margin: 0 auto; 
     }
     .input-title{
         display: inline-block;
         padding: 10px;
+    }
+    .add-btn{
+        position: relative;
+        left: 300px;
     }
 </style>
 

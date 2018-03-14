@@ -6,8 +6,7 @@ import Product from '@/components/page/Product'
 import Member from '@/components/page/member'
 import Count from '@/components/page/count' 
 import Setting from '@/components/page/setting'
-import AddProduct from '@/components/page/addProduct'
-import UpdateProduct from '@/components/page/UpdateProduct'
+
 
 Vue.use(Router)
 
