@@ -33,22 +33,15 @@
   </div>
 </template>
 <script>
+import axios from "axios"
     export default{
       name: 'hello',
       data () {
           return {
             hamburId:'hamburCount',
-            hamburData:[
-              {value:1235, name:'香辣鸡腿堡'},
-              {value:774, name:'田园鸡腿堡'},
-              {value:310, name:'和风汉堡'},
-            ],
+            hamburData:[],
             snackId:'snackCount',
-            snackData:[
-              {value:533,name:'大包薯条'},
-              {value:452,name:'脆皮炸鸡腿'},
-              {value:367,name:'魔法鸡块'}
-            ],
+            snackData:[],
             drinkId:'drinkCount',
             drinkData:[
               {value:533,name:'可乐大杯'},
@@ -59,16 +52,29 @@
               {value:241,name:'儿童欢乐套餐'},
               {value:576,name:'快乐全家桶'}
             ],
-
         }
       },
       mounted(){
+        //向后台发送请求，获取所需数据
+        axios.get('http://127.0.0.1:8081/xiangmu/vuePosData/product/countProduct.php')
+        .then((response)=>{
+          console.log(response);
+            this.hamburData=response.data[0];
+            this.drawPie(this.hamburId,this.hamburData);
+            this.snackData=response.data[1];
+            this.drawPie(this.snackId,this.snackData);
+            this.drinkData=response.data[2]
+            this.drawPie(this.drinkId,this.drinkData);
+            this.packageData=response.data[3]
+            this.drawPie(this.packageId,this.packageData);
+
+        })
+        .catch((err)=>{
+          alert("网络错误，无法连接！")
+        })
         //当逐渐挂载时，调用定义的函数
         this.drawLine();
-        this.drawPie(this.hamburId,this.hamburData);
-        this.drawPie(this.snackId,this.snackData);
-        this.drawPie(this.drinkId,this.drinkData);
-        this.drawPie(this.packageId,this.packageData);
+        
       },
       methods: {
         drawLine(){
