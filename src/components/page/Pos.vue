@@ -216,22 +216,13 @@ export default {
     checkOut(){
       if(this.totalCount!=0){
         //console.log(this.tableData);
-        var tmp=[]
-        for(var i=0;i<this.tableData.length;i++){
-          tmp['pid']=this.tableData[i].pid;
-          tmp['count']=this.tableData[i].count;
-          this.goodArray.push(tmp);
-          console.log(this.goodArray)
-        }
-        var url='http://127.0.0.1:8081/xiangmu/vuePosData/product/checkout.php?data='+this.goodArray;
-        axios.get(url)
-        .then((response)=>{
-          console.log(response)
-        })
-        .catch((err)=>{
-          alert("网络错误，无法连接！")
-        })
-        
+        this.tableData=[];
+        this.totalCount=0;
+        this.totalMoney=0;
+        this.$message({
+              message:'结账成功！',
+              type:'success'
+            })
       }else{
         this.$message.error('暂无订单需要结账')
       }

@@ -148,4 +148,7 @@ INSERT INTO `salecount`(`cid`,`family_id`, `product_id`, `product_name`, `count`
 (null,4,22,'薯你风情套餐',1021),
 (null,2,15,'洋葱圈',895),
 (null,2,13,'薯霸王',874),
-(null,4,16,'火烤鸡腿色拉',953)
+(null,4,16,'火烤鸡腿色拉',953),
+(null,3,16,'港式奶茶',983),
+(null,3,38,'铁观音绿茶',542),
+(null,3,18,'金芒果气泡饮',892),
